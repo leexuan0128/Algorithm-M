@@ -1,2 +1,3 @@
 # Algorithm-M
-algorithm practice collection
+
+Algorithm practice daily collection
