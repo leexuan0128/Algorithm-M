@@ -125,6 +125,17 @@ class linkedlist():
                 prev, cur = cur, cur.next
         return cur.element
 
+    def remove_2(self, element):
+        # 添加虚拟节点方法
+        dummy_head = Node(next = self.__head)
+        cur = dummy_head
+        while cur is not None:
+            if cur.next.value == element:
+                cur.next = cur.next.next #删除cur.next节点
+            else:
+                cur = cur.next # cur右移
+        return dummy_head
+
     def modify(self, pos, element):
         """修改指定位置的元素"""
         cur = self.__head
