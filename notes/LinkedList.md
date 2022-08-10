@@ -70,7 +70,11 @@ class linkedlist():
     
     def insert_tail_3(self, value):
         """尾插法v3: 引用虚拟头节点dummy node，不需要处理边界空链表的情况了"""
-
+        dummy_head = Node(0, next = self.__head)
+        cur = dummy_head
+        while cur.next is not None:  # 遍历到最后一个节点
+            cur = cur.next
+        cur.next = Node(value)
 
     
     def insert(self, pos, value):
@@ -126,7 +130,7 @@ class linkedlist():
         return cur.element
 
     def remove_2(self, element):
-        # 添加虚拟节点方法
+        # 添加虚拟头节点的删除指定元素方法，解决了边界问题，空头节点情况
         dummy_head = Node(next = self.__head)
         cur = dummy_head
         while cur is not None:
