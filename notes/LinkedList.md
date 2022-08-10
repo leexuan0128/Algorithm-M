@@ -53,20 +53,20 @@ class linkedlist():
         if self.__head is None:
             self.insert_head(value)  # 如果待插入节点是第一个节点，调用insert_head函数
         else:
-            p = self.__head
-            while p.next is not None:  # 遍历到最后一个节点
-                p = p.next
-            p.next = Node(value)  # 创建新节点并连接到最后
-            self.__tail = p.next
+            cur = self.__head
+            while cur.next is not None:  # 遍历到最后一个节点
+                cur = cur.next
+            cur.next = Node(value)  # 创建新节点并连接到最后
+            self.__tail = cur.next
     
     def insert_tail_2(self, value):
         """尾插法v2: 在单链表尾部增加一个tail指针"""
         # 直接利用tail定位尾部节点，添加新节点 O(1)
-        if self.__tail is None:
+        if self.__tail is None: # 链表为空 调用头插法
             self.insert_head(value)
         else:
-            self.__tail.next = Node(value)
-            self.__tail = self.__tail.next
+            self.__tail.next = Node(value) # tail的next指针连向新节点
+            self.__tail = self.__tail.next # 移动tail到尾部 
     
     def insert_tail_3(self, value):
         """尾插法v3: 引用虚拟头节点dummy node，不需要处理边界空链表的情况了"""
@@ -74,7 +74,7 @@ class linkedlist():
 
     
     def insert(self, pos, value):
-        """指定位置插入元素"""
+        """指定索引位置插入元素"""
         # 如果位置在0或者之前，调用头插法
         if pos < 0:
             self.insert_head(value)
@@ -82,14 +82,14 @@ class linkedlist():
         elif pos > self.length() - 1:
             self.insert_tail(value)
         else:
-            cur = self.__head
+            cur = self.__head # 定义一个头部临时指针cur
             count = 0
             while count < pos - 1:
                 count += 1
                 cur = cur.next
-            newest = Node(value)
-            newest.next = cur.next
-            cur.next = newest
+            newnode = Node(value) # 待插入到新节点
+            newnode.next = cur.next
+            cur.next = newnode
             
     def delete_head(self):
         """删除头结点"""
@@ -153,10 +153,10 @@ class linkedlist():
         self.__head = prev
         
     def traversal(self):
-        p = self.__head # 把head头指针也赋给p，p也指向头部
-        while p is not None:
-            print(p.value, end = " ")
-            p = p.next
+        cur = self.__head # 把head头指针也赋给p，p也指向头部
+        while cur is not None:
+            print(cur.value, end = " ")
+            cur = cur.next
         print("\n")
 
 
@@ -181,5 +181,3 @@ if __name__ == "__main__":
     
     linkedlist1.reverse_list()
     linkedlist1.traversal()
-    
-```
