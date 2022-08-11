@@ -47,7 +47,7 @@ We can define two pinters, a fast pointer and a slow pointer. Slow pointer will 
 ```python
 from typing import List
 class Solutions():
-    def remove_element(self, nums: List(int), val: int) -> int:
+    def remove_element(self, nums: List[int], val: int) -> int:
         slow = fast = 0 # define two pointers
         while fast < len(nums):
             if nums[fast] != val: # we need to keep it
@@ -55,4 +55,8 @@ class Solutions():
                 slow += 1
             fast += 1 # if we find the value, only move fast pointer to right once
         return slow
+
+if __name__ == "__main__":
+    s = Solutions()
+    print(s.remove_element([1, 2, 3, 4, 3], 3)) #answer will be 3 -> [1,2,4,4,3] The list will be [1,2,4]
 ```
