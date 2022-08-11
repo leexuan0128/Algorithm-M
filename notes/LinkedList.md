@@ -133,12 +133,12 @@ class linkedlist():
         # 添加虚拟头节点的删除指定元素方法，解决了边界问题，空头节点情况
         dummy_head = Node(next = self.__head)
         cur = dummy_head
-        while cur is not None:
+        while cur.next is not None:
             if cur.next.value == element:
                 cur.next = cur.next.next #删除cur.next节点
             else:
                 cur = cur.next # cur右移
-        return dummy_head
+        return dummy_head.next
 
     def modify(self, pos, element):
         """修改指定位置的元素"""
