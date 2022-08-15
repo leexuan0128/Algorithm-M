@@ -16,7 +16,8 @@ Output: [5,4,3,2,1]
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # 在头节点前定义一个pre空节点
-        # 然后让头节点指向pre空节点
+        # 然后定义一个cur节点，指向头节点指向head
+        # cur.next指向pre，None节点
         # pre移动到cur，cur移动到cur.next
         # 最后return pre 或者 head = pre
         pre, cur = None, head
