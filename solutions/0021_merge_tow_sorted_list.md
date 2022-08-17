@@ -15,8 +15,8 @@ Output: [1,1,2,3,4,4]
 - Brute Force  
 We can define a dummy node `dummy = ListNode(-1)` first. Use a `pre` pointer to point the dummy. Compare the val of the l1 with l2, storing the smaller val to the dummy (move the pre pointer to comparison result): `pre.next = result`  
 Judge the tail node then, `pre.next = list2 if list1 is None else list1`  
-TC: O(M + N)  
-SC: O(1)  
+TC: $O(M + N)$  
+SC: $O(1)$ 
 ```python
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
@@ -35,3 +35,21 @@ class Solution:
 ```  
 
 - Recursion  
+Termination condition: When both linkedlists are empty, it means that we have completed merging the list.   
+How to recurse: we decide which header of L1 or L2 is smaller, and then the next pointer of the smaller node points to the result of merging the rest of the nodes.  
+
+```python
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        if not l1: return l2  # 终止条件，直到两个链表都空
+        if not l2: return l1
+        if l1.val <= l2.val:  # 递归调用
+            l1.next = self.mergeTwoLists(l1.next,l2)
+            return l1
+        else:
+            l2.next = self.mergeTwoLists(l1,l2.next)
+            return l2
+```  
+
+TC: $O(M+N)$  
+SC: $O(M+N)$
