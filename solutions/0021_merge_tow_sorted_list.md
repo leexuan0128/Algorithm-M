@@ -1,4 +1,4 @@
-## 0024 Merge Two Sorted Listed
+## 0021 Merge Two Sorted Listed
 [Merge Two Sorted Listed](https://leetcode.cn/problems/merge-two-sorted-lists/)  
 
 You are given the heads of two sorted linked lists list1 and list2.
