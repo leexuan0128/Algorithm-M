@@ -37,6 +37,8 @@ class Solution:
 - Recursion  
 Termination condition: When both linkedlists are empty, it means that we have completed merging the list.   
 How to recurse: we decide which header of L1 or L2 is smaller, and then the next pointer of the smaller node points to the result of merging the rest of the nodes.  
+TC: $O(M+N)$  
+SC: $O(M+N)$
 
 ```python
 class Solution:
@@ -49,7 +51,4 @@ class Solution:
         else:
             l2.next = self.mergeTwoLists(l1,l2.next)
             return l2
-```  
-
-TC: $O(M+N)$  
-SC: $O(M+N)$
+```
