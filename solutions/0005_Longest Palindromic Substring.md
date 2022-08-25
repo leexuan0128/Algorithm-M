@@ -23,3 +23,27 @@ class Solution:
                     return s[i:i+length]
 
 ```
+
+- Center Pointer
+
+也属于左右指针的思路。具体思路是，构建一个【从中心往两边扩散】的函数——扩散的条件是，不超出边界且扩散的两边的元素相等，函数返回【回文字符串】。基于构建的函数，以此判断s中所有的位置，用一个res保留最长的结果。
+大白话是，每个位置都判断下，以该位置为中心的回文串最长为多少，遍历一遍，保留最长的那个。
+其中有一个细节，中心元素需要区分1个或者2个的情况（回文串中元素个数为奇数/偶数）
+
+```python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        def palindrome(s, l, r):
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                l -= 1
+                r += 1
+            return s[l+1:r]
+        
+        res = ''
+        for i in range(len(s)):
+            sub1 = palindrome(s, i, i)
+            sub2 = palindrome(s, i, i+1)
+            res = sub1 if len(sub1) > len(res) else res
+            res = sub2 if len(sub2) > len(res) else res
+        return res
+```
