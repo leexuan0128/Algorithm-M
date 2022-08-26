@@ -11,7 +11,9 @@ Output: [7,0,8]
 Explanation: 342 + 465 = 807  
 
 ## Solutions  
-This question is similar to `List` related problems. The key point is to convert the number properly. We can easiliy think of the remainder method.  
+$TC: O(max(m,n))$ 其中 m 和 n分别为两个链表的长度。我们要遍历两个链表的全部位置，而处理每个位置只需要 O(1) 的时间。  
+$SC: O(1)$   
+This question is similar to `List` related problems. The key point is to convert the number properly. We can think of the remainder method.  
 ```python
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
