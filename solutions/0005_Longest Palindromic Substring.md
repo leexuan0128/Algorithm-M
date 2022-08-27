@@ -11,16 +11,16 @@ Explanation: "aba" is also a valid answer.
 
 ## Solutions
 - Brute Force  
-$TC: O(n^3)$  
-$SC: O(1)$
+$TC: O(n^2)$  
+$SC: O(n)$
 ```python
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         n = len(s)
         for length in range(n, 0, -1):
-            for i in range(n-length+1):
-                if s[i:i+length] == s[i:i+length][::-1]:
-                    return s[i:i+length]
+            for i in range(n - length + 1):
+                if s[i:i + length] == s[i:i + length][::-1]:
+                    return s[i:i + length]
 
 ```
 
