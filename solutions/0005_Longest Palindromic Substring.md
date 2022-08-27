@@ -16,12 +16,13 @@ $SC: O(n)$
 ```python
 class Solution:
     def longestPalindrome(self, s: str) -> str:
+        # 暴力法
         n = len(s)
+        # length 逐渐减1，从最长的一直比较到最短的
         for length in range(n, 0, -1):
-            for i in range(n - length + 1):
-                if s[i:i + length] == s[i:i + length][::-1]:
+            for i in range(n - length + 1): # 保证每一个组合都遍历到 
+                if s[i:i + length] == s[i:i + length][::-1]: # 如果倒序后相等就是回文
                     return s[i:i + length]
-
 ```
 
 - Center Pointer Expand  
