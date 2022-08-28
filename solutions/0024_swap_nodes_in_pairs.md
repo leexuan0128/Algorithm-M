@@ -9,14 +9,16 @@ Output: [2,1,4,3]
 
 ## Solutions:  
 - Iteration  
+$TC: O(n)$，其中 n 是链表的节点数量。需要对每个节点进行更新指针的操作  
+$SC: O(1)$  
 We need to swap the each adjacent nodes in the whole linkedist other than the value of the node. We define a tmp None pointer before head. The process for example above is like:  
-`tmp -> 2 1 -> 3 2 -> 1 tmp -> 4 3 -> None 4 -> 3`  
+`tmp -> 2, 1 -> 3, 2 -> 1, tmp -> 4, 3 -> None, 4 -> 3`  
 ```python
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # 添加一个虚拟头节点
         dummy = ListNode(next = head)
-        # 定义一个临时指针tmp
+        # 定义一个临时指针tmp 指向dummy
         tmp = dummy
         # 循环条件是tmp以及后两个位置不为空
         while tmp and tmp.next and tmp.next.next:
