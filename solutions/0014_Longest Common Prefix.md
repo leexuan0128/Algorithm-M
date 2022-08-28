@@ -13,6 +13,8 @@ Output: "fl"
 
 ## Solutions:
 - Max, Min of Python  
+$TC: O(n)$, n is the length of the str  
+$SC: O(n)$  
 Actually, we can use `max() and min()` to compare the string in python, which compares the ASCII value of each character in the string.  
 We can filter the max and min sustring in the input strs. The longest common prefix must include in those two substrings.  
 
@@ -28,6 +30,8 @@ class Solution:
 ```
 
 - Zip of Python  
+$TC: O(n)$  
+$SC: O(n)$  
 Zip function can be used to extract each element in one list or unzip each element. If we use `zip(*strs)` function, we'll have`[('f', 'f', 'f'), ('l', 'l', 'l'), ('o', 'o', 'i'), ('w', 'w', 'g')]`. Obviously, the first and second index of element is the answer we want. Here we can use set() to filter the duplicate element.
 
 ```python
