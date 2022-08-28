@@ -7,12 +7,10 @@ Input: head = [1,2,3,4,5], n = 2
 Output: [1,2,3,5]  
 
 ## Solutions  
-- Two pointers (fast and slow pointers)
-We assume we have dummy node before the head and we set
-a fast and slow pointer in the dummy head position.  
-Then, we move the fast pointer `n` steps first. This is important as we need to find the Nth node later.  
-Next, we move fast and slow pointer one step per movement until the `fast.next` is `None`. The node that slow pointer points to is the answer.
-
+- Two pointers (fast and slow pointers)  
+$TC: O(L)$，其中 L 是链表的长度  
+$SC: O(1)$  
+We assume we have dummy node before the head and we set a fast and slow pointer in the dummy head position. Then, we move the fast pointer `n` steps first. This is important as we need to find the Nth node later. Next, we move fast and slow pointer one step per movement until the `fast.next` is `None`. The node that slow pointer points is the answer.
 
 ```python
 # Definition for singly-linked list.
