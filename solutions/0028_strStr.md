@@ -35,3 +35,46 @@ class Solution:
                 return i
         return -1
 ```
+- KMP  
+$SC: O(m+n)$  n 为原串的长度，m 为匹配串的长度。  
+$TC: O(m)$  
+```python
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        if not needle: return 0
+        n, m = len(haystack), len(needle)
+        # 原串和匹配串前面都加空格，使其下标从 1 开始
+        haystack = " " + haystack
+        needle = " " + needle
+        next = self.get_next(m, needle)
+        # 匹配过程，i = 1，j = 0 开始，i 小于等于原串长度
+        i, j = 1, 0 
+        while i <= n:
+            # 匹配不成功的话，j = next(j)
+            while j > 0 and haystack[i] != needle[j + 1]:
+                j = next[j]
+            # # 匹配成功的话，先让 j++
+            if haystack[i] == needle[j + 1]:
+                j += 1
+            # 整一段匹配成功，直接返回下标
+            if j == m:
+                return i - m
+            i += 1
+        return -1
+
+    def get_next(self, m, needle):
+        # 构造过程 i = 2，j = 0 开始，i 小于等于匹配串长度
+        next = [0] * (m + 1)
+        i, j = 2, 0
+        while i <= m:
+            # 匹配不成功的话，j = next(j)
+            while j > 0 and needle[i] != needle[j + 1]:
+                j = next[j]
+            # 匹配成功的话，先让 j++
+            if needle[i] == needle[j + 1]:
+                j += 1
+            # 更新 next[i], i++, 结束本次循环
+            next[i] = j
+            i += 1
+        return next
+```
