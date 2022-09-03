@@ -11,7 +11,7 @@ Input: s = "anagram", t = "nagaram"
 Output: true  
 
 ## Solutions  
-- Hash Table  
+- Hash  
 $TC: O(n)$  单层for循环  
 $SC: O(1)$  定义是的一个常量大小的辅助数组
 
