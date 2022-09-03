@@ -20,8 +20,8 @@ The first solutoin is that I need to find the value and index of each element. O
 ```python
 class solution:
     def twosum(self, nums, target):
-        for i in range(0, len(nums)-1):
-            for j in range(i+1, len(nums)):
+        for i in range(0, len(nums) - 1):
+            for j in range(i + 1, len(nums)): # 每个数不能使用两次，所以是i + 1
                 if nums[i] + nums[j] == target:
                     return [i, j]
 ```
