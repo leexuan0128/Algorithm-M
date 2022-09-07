@@ -34,26 +34,27 @@ class Solution:
         n = len(nums)
         nums.sort()
         ans = list()
-        # 枚举 i
+        # 枚举 i 指针
         for i in range(n):
             # 需要和上一次枚举的数不相同
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
-            # r 对应的指针初始指向数组的最右端
-            r = n - 1
-            target = -nums[i]
-            # 枚举 L
+            # R 对应的指针初始指向数组的最右端
+            r = n - 1 
+            # i: a, target = -a = -(b + c)
+            target = -nums[i] 
+            # 枚举 L, L = i + 1
             for l in range(i + 1, n):
                 # 需要和上一次枚举的数不相同
                 if l > i + 1 and nums[l] == nums[l - 1]:
                     continue
-                # 需要保证 l 的指针在 r 的指针的左侧
+                # 需要始终保证 l 的指针在 r 的指针的左侧。如果左右指针的数加起来比target大，那说明结果偏大了，a+b+c>0, 这时候左移右指针。
                 while l < r and nums[l] + nums[r] > target:
                     r -= 1
-                # 如果指针重合，随着 l 后续的增加
-                # 就不会有满足 i+l+r=0 并且 l<r 的 r 了，可以退出循环
-                if l == r:
+                # 如果指针重合，随着 l 后续的增加，就不会有满足 i+l+r=0 并且 l<r 的 r 了，可以退出循环
+                if l == r: 
                     break
+                # 如果好到a+b+c的组合，添加此元组
                 if nums[l] + nums[r] == target:
                     ans.append([nums[i], nums[l], nums[r]])
         return ans
