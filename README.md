@@ -1,3 +1,3 @@
-# Algorithm-M
+# Algorithm - Python
 
-Algorithm practice daily collection
+Algorithm Practice Daily Collection
