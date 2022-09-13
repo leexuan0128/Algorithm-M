@@ -38,6 +38,8 @@ If all assertions pass, then your solution will be accepted.
 
 ## Solutions:
 - Fast-Slow Pointers  
+$O(n)$
+$O(1)$
 We can define two pinters, a fast pointer and a slow pointer. Slow pointer will record the value we need to keep while fast pointer will search the whole list to locate the value that we need to remove. If we find the value that equals to the value we want to remove, keep the slow pointer still but move the fast pointer to right once until it find the value not equals to the val
 
 ```python
