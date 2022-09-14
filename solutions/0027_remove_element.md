@@ -53,8 +53,4 @@ class Solutions():
                 slow += 1
             fast += 1 # if we find the value, only move fast pointer to right once
         return slow
-
-if __name__ == "__main__":
-    s = Solutions()
-    print(s.remove_element([1, 2, 3, 4, 3], 3)) #answer will be 3 -> [1,2,4,4,3] The list will be [1,2,4]
 ```
