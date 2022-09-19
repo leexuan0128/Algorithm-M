@@ -15,14 +15,14 @@
 class MyQueue:
     def __init__(self):
         """
-        in主要负责push，out主要负责pop
+        in stack主要负责push，out stack主要负责pop
         """
         self.stack_in = [] # 入栈
         self.stack_out = [] # 出栈
 
     def push(self, x: int) -> None:
         """
-        有新元素进来，就往in里面push，原理利用列表的append方法
+        有新元素进来，就往in stack 里面push，原理利用列表的append方法
         """
         self.stack_in.append(x)
 
@@ -39,8 +39,7 @@ class MyQueue:
         # 如果出栈为空，就把入栈所有元素push进出栈，再从出栈弹出数据
         else:
             for i in range(len(self.stack_in)):
-                x = self.stack_in.pop()
-                self.stack_out.append(x)
+                self.stack_out.append(self.stack_in.pop())
             return self.stack_out.pop()
 
     def peek(self) -> int:
