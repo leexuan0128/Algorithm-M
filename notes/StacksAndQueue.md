@@ -13,6 +13,7 @@
 ## Implementation
 - 用两个栈实现队列
     ```python
+    # 栈用列表List实现
     class MyQueue:
         def __init__(self):
             """
@@ -67,3 +68,77 @@
     param_3 = obj.pop() # 1
     param_4 = obj.empty() # F
     ```
+
+- 用两个队列实现栈
+```python
+# 队列用deque实现
+from collections import deque
+class MyStack:
+    def __init__(self):
+        self.queue_in = deque() # in queue 存所有数据
+        self.queue_out = deque() # out queue pop交换数据
+
+    def push(self, x: int) -> None:
+        self.queue_in.append(x)
+
+    def pop(self) -> int:
+        """
+        1. 首先确认不空
+        2. 因为队列的特殊性，FIFO，所以我们只有在pop()的时候才会使用queue_out
+        3. 先把queue_in中的所有元素（除了最后一个），依次出列放进queue_out
+        4. 交换in和out，此时out里只有一个元素
+        5. 把out中的pop出来，即是原队列的最后一个
+        
+        tip：这不能像栈实现队列一样，因为另一个queue也是FIFO，如果执行pop()它不能像
+        stack一样从另一个pop()，所以干脆in只用来存数据，pop()的时候两个进行交换
+        """
+        if self.empty():
+            return None
+        for _ in range(len(self.queue_in) - 1):
+            self.queue_out.append(self.queue_in.popleft())
+        self.queue_in, self.queue_out = self.queue_out, self.queue_in
+        return self.queue_out.popleft()
+    
+    def top(self) -> int:
+        if self.empty():
+            return None
+        return self.queue_in[-1]
+
+    def empty(self) -> bool:
+        return len(self.queue_in) == 0
+
+# Your MyStack object will be instantiated and called as such:
+# obj = MyStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.empty()
+```
+
+- 用一个队列实现栈
+```python
+# 队列用deque实现
+from collections import deque
+class MyStack:
+    def __init__(self):
+        self.single_queue = deque()
+
+    def push(self, x: int) -> None:
+        self.single_queue.append(x)
+
+    # 一个队列在模拟栈弹出元素的时候只要将队列头部的元素（除了最后一个元素外）重新添加到队列尾部，此时在去弹出头元素就是出栈的顺序了。
+    def pop(self) -> int:
+        if self.empty():
+            return None
+        for i in range(len(self.single_queue) - 1):
+            self.single_queue.append(self.single_queue.popleft())
+        return self.single_queue.popleft()
+
+    def top(self) -> int:
+        if self.empty():
+            return None
+        return self.single_queue[-1]
+
+    def empty(self):
+        return not self.single_queue
+```
