@@ -26,7 +26,7 @@ Input: s = "(]"
 Output: false  
 
 ## Solutions  
-
+Use the dictionary to store the brackets.
 ```python
 class Solution:
     def isValid(self, s: str) -> bool:
@@ -45,4 +45,24 @@ class Solution:
                 stack.pop()
         return True if not stack else False
 
+```
+Use list to store the brackets.
+
+```python
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        for item in s:
+            if item == '(':
+                stack.append(')')
+            elif item == '[':
+                stack.append(']')
+            elif item == '{':
+                stack.append('}')
+            elif not stack or item != stack[-1]:
+                return False
+            else:
+                stack.pop()
+
+        return True if not stack else False
 ```
