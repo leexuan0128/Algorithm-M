@@ -63,6 +63,5 @@ class Solution:
                 return False
             else:
                 stack.pop()
-
         return True if not stack else False
 ```
