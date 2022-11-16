@@ -1,6 +1,6 @@
 ## Definition
 
-栈和队列的原理：队列是先进先出，栈是先进后出。
+栈和队列的原理：队列是先进先出，FIFO，栈是先进后出，FILO。
 
 队列可以理解为有两个口的直通道，一边负责入，另一边负责出。而栈是只有入口的封闭通道，所以只能从入口处进行操作。
 
@@ -44,7 +44,7 @@
                     self.stack_out.append(self.stack_in.pop())
                 return self.stack_out.pop()
 
-        def peek(self) -> int:
+        def peek(self) -> int: # check the first element
             """
             Show the front element.
             """
